@@ -52,7 +52,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: url('https://images.unsplash.com/photo-1549667742-e1f860d64f4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') no-repeat center center; /* Specific Svalbard Landscape */
+            background: url('https://eu-assets.simpleview-europe.com/svalbard/imageresizer/?image=%2Fdbimgs%2FGalleryimage%2810%29.jpg&action=MediaGallery') no-repeat center center; /* Specific Svalbard Landscape */
             background-size: cover;
             overflow: hidden;
         }
@@ -361,6 +361,7 @@
             background-color: var(--light-blue-bg);
             color: var(--primary-dark-blue);
             font-weight: 600;
+            padding: 1rem 1.25rem;
         }
         .accordion-button:not(.collapsed) {
              background-color: var(--accent-light-blue);
@@ -369,32 +370,32 @@
         }
          .accordion-button:focus {
             box-shadow: 0 0 0 0.25rem rgba(92, 184, 230, 0.5); /* Light blue focus */
+            border-color: var(--accent-light-blue);
          }
          .accordion-body {
              background-color: var(--white);
-             padding: 20px;
+             padding: 1.25rem;
          }
         .accordion-item {
             border: 1px solid #dee2e6;
-            border-radius: 5px;
+            border-radius: .375rem; /* Bootstrap default radius */
             margin-bottom: 10px;
             overflow: hidden; /* For rounded corners */
         }
-        .accordion-item:first-of-type {
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
+        .accordion-button::after { /* Custom accordion icon (optional) */
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230a2e5c'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+          transition: transform .2s ease-in-out;
         }
-        .accordion-item:last-of-type {
-             border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
+        .accordion-button:not(.collapsed)::after {
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+          transform: rotate(-180deg);
         }
-        .accordion-button i {
+        .accordion-button i.fa-fw {
             margin-right: 10px;
-            transition: transform 0.3s ease;
+            width: 20px; /* Ensure icon alignment */
+            text-align: center;
         }
-        .accordion-button:not(.collapsed) i {
-             transform: rotate(90deg);
-        }
+
 
         /* Info items styling */
          .info-item {
@@ -423,15 +424,45 @@
         }
         .text-danger-emphasis { /* Bootstrap class for stronger danger text */
             font-weight: bold;
+            color: #dc3545 !important;
         }
+        .text-primary {
+            color: var(--primary-dark-blue) !important; /* Overriding default bootstrap primary if needed */
+        }
+        .text-success {
+            color: #198754 !important;
+        }
+        .text-info {
+            color: #0dcaf0 !important;
+        }
+        .text-warning {
+             color: #ffc107 !important;
+        }
+         .text-secondary {
+             color: #6c757d !important;
+         }
+         .text-danger {
+             color: #dc3545 !important;
+         }
+
 
         /* AOS Customization */
         [data-aos="fade-up"] {
           transform: translateY(30px);
+          opacity: 0; /* Start transparent */
         }
+         html.js [data-aos="fade-up"].aos-animate { /* Target only when AOS is active and animating */
+            transform: translateY(0);
+             opacity: 1;
+        }
+
         [data-aos="fade-in"] {
             opacity: 0;
         }
+         html.js [data-aos="fade-in"].aos-animate {
+             opacity: 1;
+         }
+
 
     </style>
 </head>
@@ -539,12 +570,12 @@
                     <!-- Hotele Wyższego Standardu -->
                     <div class="col-lg-4 col-md-6">
                         <div class="card h-100">
-                             <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="card-img-top" alt="Luksusowy pokój hotelowy">
+                             <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Luksusowy pokój hotelowy z widokiem">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Hotele Wyższego Standardu (4*)</h5>
                                 <p class="card-text">Pełen komfort, restauracje, piękne widoki. Idealne dla ceniących wygodę.</p>
                                 <ul class="list-unstyled mt-auto">
-                                    <li><i class="fas fa-star fa-fw"></i> Przykłady: Radisson Blu Polar, Funken Lodge, Svalbard Hotell | Polfareren</li>
+                                    <li><i class="fas fa-star fa-fw text-warning"></i> Przykłady: Radisson Blu Polar, Funken Lodge, Svalbard Hotell | Polfareren</li>
                                     <li><i class="fas fa-map-marker-alt fa-fw"></i> Lokalizacja: Zazwyczaj w centrum lub z dobrym widokiem.</li>
                                     <li><i class="fas fa-tag fa-fw"></i> Cena (2os./noc): od 940 - 1500+ PLN</li>
                                 </ul>
@@ -554,12 +585,12 @@
                      <!-- Hotele Średniego Standardu -->
                      <div class="col-lg-4 col-md-6">
                         <div class="card h-100">
-                            <img src="https://images.unsplash.com/photo-1568495248636-6432b97bd949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" class="card-img-top" alt="Przytulny pokój hotelowy">
+                            <img src="https://images.unsplash.com/photo-1568495248636-6432b97bd949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" class="card-img-top" alt="Przytulny pokój hotelowy w stylu skandynawskim">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Hotele Średniego Standardu (3-3.5*)</h5>
                                 <p class="card-text">Komfortowe pokoje, dobra lokalizacja, często unikalny wystrój (np. Basecamp w stylu traperskim).</p>
                                 <ul class="list-unstyled mt-auto">
-                                    <li><i class="fas fa-star-half-alt fa-fw"></i> Przykłady: Svalbard Hotell | The Vault, Basecamp Hotel</li>
+                                    <li><i class="fas fa-star-half-alt fa-fw text-warning"></i> Przykłady: Svalbard Hotell | The Vault, Basecamp Hotel</li>
                                     <li><i class="fas fa-map-marker-alt fa-fw"></i> Lokalizacja: Zazwyczaj w centrum.</li>
                                     <li><i class="fas fa-tag fa-fw"></i> Cena (2os./noc): od 640 - 900 PLN</li>
                                 </ul>
@@ -569,7 +600,7 @@
                     <!-- Hostele / Pensjonaty -->
                     <div class="col-lg-4 col-md-6">
                         <div class="card h-100">
-                             <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="card-img-top" alt="Wspólna przestrzeń w hostelu">
+                             <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Wspólna przestrzeń w hostelu lub pensjonacie">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Hostele / Pensjonaty</h5>
                                 <p class="card-text">Opcje ekonomiczne, często ze wspólnymi łazienkami/kuchnią. Świetna atmosfera i możliwość poznania innych podróżników.</p>
@@ -584,7 +615,7 @@
                      <!-- Apartamenty -->
                      <div class="col-lg-4 col-md-6">
                         <div class="card h-100">
-                             <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" class="card-img-top" alt="Nowoczesny apartament">
+                             <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" class="card-img-top" alt="Nowoczesny salon w apartamencie">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">Apartamenty</h5>
                                 <p class="card-text">Więcej przestrzeni, prywatność, aneks kuchenny umożliwiający samodzielne gotowanie (oszczędność!).</p>
@@ -630,7 +661,7 @@
                      <div class="col-lg-6">
                          <h3 class="mb-4"><i class="fas fa-cloud-sun-rain me-2 text-primary"></i>Warunki Pogodowe (IX - XI)</h3>
                          <p>Jesień to okres przejściowy z dynamicznie zmieniającą się pogodą i szybko skracającym się dniem.</p>
-                         <ul class="list-group list-group-flush">
+                         <ul class="list-group list-group-flush bg-transparent">
                              <li class="list-group-item"><i class="fas fa-thermometer-half fa-fw"></i><strong>Temperatury:</strong> Od +1/-1°C (IX), przez -3/-5°C (X), do -6/-11°C (XI). Wiatr znacząco obniża odczuwalną!</li>
                              <li class="list-group-item"><i class="fas fa-cloud-showers-heavy fa-fw"></i><strong>Opady:</strong> Deszcz/śnieg (IX), głównie śnieg (X, XI). Stosunkowo wilgotno.</li>
                             <li class="list-group-item"><i class="fas fa-wind fa-fw"></i><strong>Wiatr:</strong> Może być silny i porywisty, potęgując uczucie zimna.</li>
@@ -640,7 +671,7 @@
                      <div class="col-lg-6">
                          <h3 class="mb-4"><i class="fas fa-user-astronaut me-2 text-primary"></i>Niezbędny Ekwipunek</h3>
                          <p>Kluczem jest ubieranie się <strong class="text-primary">"na cebulkę" (warstwowo)</strong>. Komfort = bezpieczeństwo.</p>
-                         <ul class="list-group list-group-flush">
+                         <ul class="list-group list-group-flush bg-transparent">
                              <li class="list-group-item"><i class="fas fa-layer-group fa-fw"></i><strong>Warstwy:</strong> Termoaktywna (baza), Izolująca (polar/puch), Ochronna (wiatro/wodoodporna).</li>
                              <li class="list-group-item"><i class="fas fa-hat-winter fa-fw"></i><strong>Głowa:</strong> Ciepła czapka, kominiarka/komin.</li>
                              <li class="list-group-item"><i class="fas fa-mitten fa-fw"></i><strong>Ręce:</strong> Cienkie + grube, nieprzemakalne łapawice.</li>
@@ -652,7 +683,7 @@
              </div>
         </section>
 
-<!-- Atrakcje Section -->
+         <!-- Atrakcje Section -->
         <section id="atrakcje">
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
@@ -666,7 +697,7 @@
                     <!-- Zorza Polarna -->
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                         <div class="card h-100">
-                            <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Zorza Polarna nad ośnieżonymi górami">
+                             <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Zorza Polarna nad ośnieżonymi górami">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title"><i class="fas fa-meteor text-success me-2"></i>Polowanie na Zorzę Polarną</h5>
                                 <p class="card-text">Najlepsze szanse od października (ciemne noce). Listopad (noc polarna) oferuje 24h możliwości (teoretycznie). Wymaga ucieczki od świateł miasta – idealne są zorganizowane wycieczki.</p>
@@ -676,7 +707,7 @@
                     <!-- Psie Zaprzęgi -->
                      <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                         <div class="card h-100">
-                             <img src="https://images.unsplash.com/photo-1597278616188-9337837f6c96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Psy husky gotowe do ciągnięcia sań w śniegu">
+                             <img src="https://eu-assets.simpleview-europe.com/svalbard/imageresizer/?image=%2Fdbimgs%2FDoublefebruar.jpg&action=FeaturedItems3x2" class="card-img-top" alt="Psy husky gotowe do ciągnięcia sań w śniegu">
                              <div class="card-body d-flex flex-column">
                                 <h5 class="card-title"><i class="fas fa-dog text-info me-2"></i>Przejażdżka Psim Zaprzęgiem</h5>
                                 <p class="card-text">Jesienią (IX-X) na specjalnych wózkach na kołach. Gdy spadnie śnieg (zwykle od XI/XII), możliwe są wycieczki na saniach. Niezapomniane spotkanie z arktycznymi psami i dziką przyrodą.</p>
@@ -686,7 +717,7 @@
                     <!-- Skutery Śnieżne -->
                      <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                         <div class="card h-100">
-                             <img src="https://images.unsplash.com/photo-1517987155-3011957187e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Osoba na skuterze śnieżnym w arktycznym terenie">
+                             <img src="https://eu-assets.simpleview-europe.com/svalbard/imageresizer/?image=%2Fdbimgs%2FDoublemars2.jpg&action=FeaturedItems3x2" class="card-img-top" alt="Osoba na skuterze śnieżnym w arktycznym terenie">
                              <div class="card-body d-flex flex-column">
                                 <h5 class="card-title"><i class="fas fa-snowflake text-primary me-2"></i>Wyprawy Skuterami Śnieżnymi</h5>
                                 <p class="card-text">Dostępność jesienią BARDZO ograniczona (zależna od śniegu). Sezon zwykle startuje zimą (XII-II). W listopadzie szansa rośnie, ale bez gwarancji. Wymagane prawo jazdy.</p>
@@ -696,7 +727,7 @@
                     <!-- Jaskinie Lodowe -->
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                         <div class="card h-100">
-                             <img src="https://images.unsplash.com/photo-1617193690138-616531d491a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" class="card-img-top" alt="Osoba eksplorująca błekitną jaskinię lodową z czołówką">
+                             <img src="https://eu-assets.simpleview-europe.com/svalbard/imageresizer/?image=%2Fdbimgs%2Fdoublejuli2.jpg&action=FeaturedItems3x2" class="card-img-top" alt="Osoba eksplorująca błekitną jaskinię lodową z czołówką">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title"><i class="fas fa-icicles text-info me-2"></i>Eksploracja Jaskiń Lodowych</h5>
                                 <p class="card-text">Zazwyczaj dostępne zimą (od XI/XII). Jesienią dostępność ograniczona. Możliwe piesze wycieczki lub łączone. Magiczny, błękitny świat lodu.</p>
@@ -727,7 +758,7 @@
                     <!-- Piesze Wycieczki -->
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                         <div class="card h-100">
-                            <img src="https://images.unsplash.com/photo-1548075895-848a4a9ef352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" class="card-img-top" alt="Grupa turystów wędrująca z przewodnikiem po tundrze na Svalbardzie">
+                             <img src="https://eu-assets.simpleview-europe.com/svalbard/imageresizer/?image=%2Fdbimgs%2FDoublejuni.jpg&action=FeaturedItems3x2" class="card-img-top" alt="Grupa turystów wędrująca z przewodnikiem po tundrze na Svalbardzie">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title"><i class="fas fa-hiking text-success me-2"></i>Wędrówki z Przewodnikiem</h5>
                                 <p class="card-text"><strong class="text-danger-emphasis">Zawsze z uzbrojonym przewodnikiem</strong> (niedźwiedzie!). Dostępne jesienią, dopóki pozwalają warunki. Trasy o różnym stopniu trudności oferują wspaniałe widoki i kontakt z naturą.</p>
@@ -750,7 +781,6 @@
                 </div>
             </div>
         </section>
-
 
         <!-- Operatorzy Section -->
         <section id="operatorzy">
@@ -1136,7 +1166,7 @@
     <!-- Footer -->
     <footer class="mt-auto">
         <div class="container px-4">
-            <p>© 2025 Plan Wyprawy na Svalbard by FRN.</p>
+            <p>&copy; 2025 Plan Wyprawy na Svalbard by FRN.</p>
         </div>
     </footer>
 
@@ -1201,9 +1231,9 @@
                 const targetElement = document.querySelector(targetId);
 
                 if (targetElement) {
+                    const currentNavbarHeight = navbar.offsetHeight; // Get current height (might change on scroll)
                     const elementPosition = targetElement.getBoundingClientRect().top;
-                    // Use the dynamically calculated navbarHeight
-                    const offsetPosition = elementPosition + window.pageYOffset - (navbar.classList.contains('scrolled') ? navbar.offsetHeight : navbarHeight); // Adjust offset based on scrolled state
+                    const offsetPosition = elementPosition + window.pageYOffset - currentNavbarHeight; // Use current height for offset
 
                     window.scrollTo({
                          top: offsetPosition,
